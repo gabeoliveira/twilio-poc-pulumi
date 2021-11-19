@@ -1,0 +1,10 @@
+{
+    "name": "twilio-poc",
+    "main": "index.js",
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0",
+        "dotenv": "^10.0.0",
+        "twilio": "^3.71.1",
+        "twilio-pulumi-provider": "^0.0.13"
+    }
+}

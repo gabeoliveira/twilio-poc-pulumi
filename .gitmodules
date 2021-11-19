@@ -1,0 +1,16 @@
+
+[submodule "plugins/plugin-flex-localization"]
+	path = plugins/plugin-flex-localization
+	url = https://github.com/twilio-professional-services/plugin-flex-localization.git
+[submodule "plugins/flex-dialpad-addon-plugin"]
+	path = plugins/flex-dialpad-addon-plugin
+	url = https://github.com/twilio-professional-services/flex-dialpad-addon-plugin
+[submodule "plugins/plugin-outbound-whatsapp"]
+	path = plugins/plugin-outbound-whatsapp
+	url = https://github.com/gabeoliveira/plugin-outbound-whatsapp.git
+[submodule "plugins/plugin-chat-sms-transfer"]
+	path = plugins/plugin-chat-sms-transfer
+	url = https://github.com/twilio-professional-services/plugin-chat-sms-transfer
+[submodule "plugins/plugin-message-media"]
+	path = plugins/plugin-message-media
+	url = https://github.com/twilio-labs/plugin-message-media
