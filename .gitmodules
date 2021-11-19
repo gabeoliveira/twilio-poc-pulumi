@@ -8,9 +8,6 @@
 [submodule "plugins/plugin-outbound-whatsapp"]
 	path = plugins/plugin-outbound-whatsapp
 	url = https://github.com/gabeoliveira/plugin-outbound-whatsapp.git
-[submodule "plugins/plugin-chat-sms-transfer"]
-	path = plugins/plugin-chat-sms-transfer
-	url = https://github.com/twilio-professional-services/plugin-chat-sms-transfer
 [submodule "plugins/plugin-message-media"]
 	path = plugins/plugin-message-media
 	url = https://github.com/twilio-labs/plugin-message-media
