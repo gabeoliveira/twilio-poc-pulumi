@@ -3,8 +3,6 @@ const pulumi = require("@pulumi/pulumi");
 require('dotenv').config();
 
 const { Resource, Serverless, CheckServerless, FlexPlugin } = require('twilio-pulumi-provider');
-const { getTaskChannel } = require('./helper.ts'); 
-
 
 
 const stack = pulumi.getStack();
