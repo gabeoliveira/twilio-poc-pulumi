@@ -240,7 +240,7 @@ const chatTransferServerless = new Serverless("chat-transfer-serverless", {
 
 const chatTransferFlexPlugin = new FlexPlugin("chat-transfer-flex-plugin", { 
     attributes: {
-        cwd: "./../plugins/plugin-sms-transfer",
+        cwd: "./../plugins/plugin-chat-transfer",
         env: pulumi.all([chatTransferDomain]).apply(([ chatTransferDomain ]) => (
             {
                 REACT_APP_SERVERLESS_FUNCTION_DOMAIN: `https://${chatTransferDomain}`
