@@ -227,23 +227,23 @@ const chatTransferDomain = CheckServerless.getDomainName(chatTransferServiceName
 
 const chatTransferServerless = new Serverless("chat-transfer-serverless", {
     attributes: {
-      cwd: `./../plugins/plugin-chat-sms-transfer/functions`,
+      cwd: `./../plugins/plugin-chat-transfer/functions`,
       serviceName: chatTransferServiceName,
       env: {
         TWILIO_WORKSPACE_SID: flexWorkspace.sid,
         TWILIO_CHAT_TRANSFER_WORKFLOW_SID: workflow.sid
       },    
       functionsEnv: stack,
-      pkgJson: require("./../plugins/plugin-chat-sms-transfer/functions/package.json")
+      pkgJson: require("./../plugins/plugin-chat-transfer/functions/package.json")
     }
 });
 
 const chatTransferFlexPlugin = new FlexPlugin("chat-transfer-flex-plugin", { 
     attributes: {
-        cwd: "./../plugins/plugin-chat-sms-transfer",
+        cwd: "./../plugins/plugin-sms-transfer",
         env: pulumi.all([chatTransferDomain]).apply(([ chatTransferDomain ]) => (
             {
-                FLEX_APP_FUNCTIONS_BASE: `https://${chatTransferDomain}`
+                REACT_APP_SERVERLESS_FUNCTION_DOMAIN: `https://${chatTransferDomain}`
             }
         )),
         runTestsOnPreview: true

@@ -11,6 +11,6 @@
 [submodule "plugins/plugin-message-media"]
 	path = plugins/plugin-message-media
 	url = https://github.com/twilio-labs/plugin-message-media
-[submodule "plugins/async-power-dialer"]
-	path = plugins/async-power-dialer
-	url = https://github.com/kaiquelupo/async-power-dialer
+[submodule "plugins/plugin-chat-transfer"]
+	path = plugins/plugin-chat-transfer
+	url = https://github.com/twilio-professional-services/plugin-chat-sms-transfer
