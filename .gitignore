@@ -77,3 +77,7 @@ typings/
 
 # Test scripts
 testScript.ts
+
+# Twilio IaC
+.twilio-infra
+pulumi
