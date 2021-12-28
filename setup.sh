@@ -5,3 +5,5 @@ cp -a ./../pulumi-example/. .
 rm index.js
 cp .env.example .env
 export FIND_BEFORE_CREATE=true
+git submodule init
+git submodule update
