@@ -80,4 +80,3 @@ testScript.ts
 
 # Twilio IaC
 .twilio-infra
-pulumi
