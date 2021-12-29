@@ -25,6 +25,14 @@ Before starting setup, make sure you have the tools below installed:
 1. [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart)
 2. [Twilio Infra Plugin](https://github.com/kaiquelupo/plugin-twilio-infra)
 3. [Pulumi CLI](https://www.pulumi.com/docs/reference/cli/)
+4. The following Information regarging the account:
+
+| Name      | Description |
+| --------  | ----------- |
+| Account SID | SID of your newly created account |
+| Auth Token | Authentication Token of your newly created account |
+| Whatsapp Number | Whatsapp Number to be used on Flex. **IMPORTANT:** For a new account you are not going to have this info, as Whatsapp onboarding takes some time. In that case, you can use the [Sandbox](https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn) number for testing and replace it for the actual number later
+| Streams Endpoint | Endpoint for your **Event Streams** Sink. Leave it blank if you don't wish to use it
 
 ## Deployment
 
@@ -36,7 +44,9 @@ Before starting setup, make sure you have the tools below installed:
 2. Clone this repository `git clone https://github.com/gabeoliveira/twilio-poc-pulumi.git`
 3. Navigate into the project folder
 4. Run `source setup.sh [name of your project]` (It creates the Twilio Infra project, clones submodules and setup the Pulumi script within the project. If you wish to know exactly which commands it runs, check [here](https://github.com/gabeoliveira/twilio-poc-pulumi/blob/main/setup.sh))
-5. Run `twilio infra:deploy` (**IMPORTANT:** During the Preview step, Pulumi will say that resources related to TaskRouter couldn't be found. That's normal, as we don't have access to the Workspace SID yet)
+5. Setup your environment variables with the Twilio Account information gathered above
+6. Run `twilio infra:deploy` (**IMPORTANT:** During the Preview step, Pulumi will say that resources related to TaskRouter couldn't be found. That's normal, as we don't have access to the Workspace SID yet)
+7. Because the API doesn't allow to add Whatsapp numbers to Messaging Services. That step needs to be done manually. Go to the recently created [service](https://console.twilio.com/us1/develop/sms/services) and add your Whatsapp number. If you're using **Sandbox**, copy the Webhook endpoint in the Messaging Service and paste it in the "When a message comes in" box in the [Sandbox Settings](https://console.twilio.com/us1/develop/sms/settings/whatsapp-sandbox)
 
 **OBSERVATION:** During the first deploy, some Flex Plugins might raise a conflict error. It will happen if you have other Twilio Projects that run the same Plugin and are using the same terminal as the other project. This is because of a environment conflict. If it happens, just deploy the project again.
 
