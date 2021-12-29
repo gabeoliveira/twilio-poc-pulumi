@@ -199,7 +199,7 @@ const mediaMessagesServerless = new Serverless("media-messages-serverless", {
       cwd: `./../plugins/plugin-message-media/mms-handler`,
       serviceName: mediaMessagesServiceName,
       env: {
-        CHAT_SERVICE_SID: process.env.CHAT_SERVICE_SID,
+        CHAT_SERVICE_SID: chatService.sid,
         PROXY_SERVICE: proxyService.sid,
         TWILIO_WHATSAPP_NUMBER: process.env.WHATSAPP_NUMBER
       },    
