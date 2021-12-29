@@ -351,74 +351,6 @@ const outboundWaFlexPlugin = new FlexPlugin("outbound-whatsapp-flex-plugin", {
     }
 });
 
-/*Dialer Add-on*/
-
-/*const voiceTaskChannel = getTaskChannel('voice', flexWorkspace.sid)
-    .then(channel => channel);
-
-//pulumi.log.info(pulumi.interpolate`${voiceTaskChannelSid}`);*/
-
-const dialerAddonWorkflow = new Resource("dialer-addon-workflow", {
-    resource: ["taskrouter", { "workspaces" : flexWorkspace.sid }, "workflows"],
-    attributes: {
-        friendlyName: 'Dialer Addon Workflow',
-        configuration: pulumi.all([everyoneTaskQueue.sid])
-            .apply(([ everyoneTaskQueueSid ]) => JSON.stringify(
-                {
-                    task_routing: {
-                        filters: [
-                            {
-                                friendlyName: "Everyone Queue",
-                                expression: `task.targetWorker == worker.contact_uri`,
-                                targets: [
-                                    {
-                                        queue: everyoneTaskQueueSid,   
-                                        priority: 1000,
-                                        
-                                    }
-                                ] 
-                            }
-                        ],
-                        default_filter: {
-                            queue: everyoneTaskQueueSid
-                        }
-                    }
-                }
-            ))
-    },
-});
-
-const dialerAddonServiceName = 'dialpad';
-const dialerAddonDomain = CheckServerless.getDomainName(dialerAddonServiceName, stack);
-
-const dialerAddonServerless = new Serverless("dialer-addon-serverless", {
-    attributes: {
-      cwd: `./../plugins/flex-dialpad-addon-plugin/serverless`,
-      serviceName: dialerAddonServiceName,
-      env: {
-        TWILIO_NUMBER: process.env.TWILIO_NUMBER,
-        TWILIO_WORKFLOW_SID: dialerAddonWorkflow.sid,
-        TWILIO_WORKSPACE_SID: flexWorkspace.sid
-      },    
-      functionsEnv: stack,
-      pkgJson: require("./../plugins/flex-dialpad-addon-plugin/serverless/package.json")
-    }
-});
-
-const dialerAddonFlexPlugin = new FlexPlugin("dialer-addon-flex-plugin", { 
-    attributes: {
-        cwd: "./../plugins/flex-dialpad-addon-plugin",
-        env: pulumi.all([dialerAddonDomain]).apply(([ dialerAddonDomain ]) => (
-            {
-                REACT_APP_SERVICE_BASE_URL: `https://${dialerAddonDomain}`,
-                REACT_APP_TASK_CHANNEL_SID: process.env.TWILIO_VOICE_TASKCHANNEL_SID
-
-            }
-        )),
-        runTestsOnPreview: true
-    }
-});
-
 /* Event Streams */
 
 
@@ -458,11 +390,6 @@ const subscriptions = process.env.STREAMS_ENDPOINT ?
     })
     :{};
 
-
-
-
-
-
 export let output = {
     flexWorkspace: flexWorkspace.sid,
     chatService: chatService.sid,
@@ -474,9 +401,6 @@ export let output = {
     mediaMessagesServerless: mediaMessagesServerless.sid,
     mediaMessagesFlexPlugin: mediaMessagesFlexPlugin.sid,
     flexFlowOutbound: flexFlowOutbound.sid,
-    dialerAddonWorkflow: dialerAddonWorkflow.sid,
-    dialerAddonServerless: dialerAddonServerless.sid,
-    dialerAddonFlexPlugin: dialerAddonFlexPlugin.sid,
     sink: sink.sid,
     subscriptions: subscriptions.sid
 }
